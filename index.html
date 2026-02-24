@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ahmad Dani - Portfolio</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand fw-semibold" href="#home">{{ name }}</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Me</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#certificates">Certificates</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero -->
+      <header id="home" class="hero-section d-flex align-items-center">
+        <div class="container text-center">
+          <div class="row">
+            <div
+              class="col-md-4 text-center img-profil bg-dark rounded-4 shadow-lg"
+            >
+              <img
+                src="assets/img/ahmddani.png"
+                class="img-fluid"
+                alt="Profile Photo"
+              />
+            </div>
+            <div class="col-md-8 align-content-center">
+              <h1 class="hero-title">Hi, I'm <span>{{ name }}</span></h1>
+              <p class="hero-subtitle">{{ role }}</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- About -->
+      <section id="about" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="text-center mb-5 fw-semibold">About Me</h2>
+
+          <!-- DESKRIPSI DIRI -->
+          <div class="row justify-content-center mb-5">
+            <div class="col-md-8 text-center">
+              <p class="lead">
+                Hello! I'm <strong>{{name}}</strong>, an enthusiastic
+                <strong>{{role}}</strong> who is passionate about web
+                development, UI/UX design, and computer networking. I enjoy
+                building responsive, modern, and user-friendly websites while
+                also understanding network infrastructure, system connectivity,
+                and basic network configuration. I continuously strive to
+                improve my technical, analytical, and problem-solving skills.
+              </p>
+            </div>
+          </div>
+
+          <!-- SKILLS & EXPERIENCE -->
+          <div class="row">
+            <!-- Skills -->
+            <div class="col-md-6 mb-4">
+              <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                <h4 class="mb-4">My Skills</h4>
+
+                <div v-for="skill in skills" :key="skill.name" class="mb-3">
+                  <label class="fw-semibold">{{ skill.name }}</label>
+                  <div class="progress">
+                    <div
+                      class="progress-bar progress-bar-striped progress-bar-animated"
+                      :class="skill.color"
+                      :style="{ width: skill.level + '%' }"
+                    >
+                      {{ skill.level }}%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="col-md-6">
+              <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                <h4 class="mb-4">Experience</h4>
+
+                <div
+                  v-for="exp in experiences"
+                  :key="exp.title"
+                  class="experience-item mb-4"
+                >
+                  <h5>{{ exp.title }}</h5>
+                  <small class="text-muted">
+                    {{ exp.company }} | {{ exp.year }}
+                  </small>
+                  <p class="mt-2 mb-0">{{ exp.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certificates -->
+      <section id="certificates" class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-5 fw-semibold">Certificates</h2>
+
+          <div class="row">
+            <div
+              class="col-md-4 mb-4"
+              v-for="cert in certificates"
+              :key="cert.title"
+            >
+              <div class="card cert-card h-100 shadow-sm">
+                <img
+                  :src="cert.image"
+                  class="card-img-top"
+                  style="height: 200px; object-fit: cover"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{ cert.title }}</h5>
+                  <p class="card-text text-muted">{{ cert.organization }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center py-3 bg-dark text-white">
+        © 2026 {{ name }} | All Rights Reserved
+      </footer>
+    </div>
+
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            name: "AhmadDani",
+            role: "Information System Student",
+
+            skills: [
+              { name: "Public Speaking", level: 80, color: "bg-success" },
+              { name: "Programming", level: 85, color: "bg-info" },
+              { name: "Networking", level: 95, color: "bg-warning" },
+              { name: "Teaching", level: 88, color: "bg-primary" },
+            ],
+
+            experiences: [
+              {
+                title: "Network Technician",
+                company: "PT Telkom Indonesia",
+                year: "2023",
+                description:
+                  "Membantu troubleshooting dalam jaringan fiber optik di wilayah kerja Kutai Barat",
+              },
+              {
+                title: "Teaching Assistant",
+                company: "PRAKTISI",
+                year: "2024 - Now",
+                description:
+                  "Menjadi asisten pengajar praktikum pada Mahasiswa Sistem Informasi Fakultas Teknik Universitas Mulawarman",
+              },
+            ],
+
+            certificates: [
+              {
+                title: "Network & Computer Technician",
+                organization: "BNSP",
+                image: "assets/img/beenspe.webp",
+              },
+              {
+                title: "Relation and Community Service Staff",
+                organization: "INFORSA",
+                image: "assets/img/Ahmad Dani.png",
+              },
+              {
+                title: "Programming Fundamentals Teaching Assistant",
+                organization: "PRAKTISI",
+                image: "assets/img/praktisi.jpg",
+              },
+            ],
+          };
+        },
+      }).mount("#app");
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

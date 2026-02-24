@@ -1,0 +1,61 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+  padding-top: 50px;
+}
+
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(135deg, #1f2937, #111827);
+  color: white;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-title span {
+  color: #00bfff;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.progress {
+  height: 20px;
+  border-radius: 20px;
+}
+
+.experience-item {
+  padding: 15px;
+  border-left: 4px solid #0d6efd;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateX(5px);
+}
+
+.cert-card {
+  transition: 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+}
+
+/* img profil */
+.img-profil {
+  filter: grayscale();
+  transition: 0.3s;
+}
+
+.img-profil:hover {
+  filter: none;
+  transition: 0.3s;
+}
